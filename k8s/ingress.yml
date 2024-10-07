@@ -4,6 +4,8 @@ metadata:
   name: angular-canary-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/affinity: "cookie" 
+    nginx.ingress.kubernetes.io/session-cookie-expires: "3600"
 spec:
   ingressClassName: nginx
   rules:
