@@ -1,52 +1,52 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: angular-canary
-spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: angular-canary
-  template:
-    metadata:
-      labels:
-        app: angular-canary
-    spec:
-      containers:
-        - name: angular-canary
-          image: "vfjansen/angular-app-kube:v8.2"
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: angular-canary
+# spec:
+#   replicas: 5
+#   selector:
+#     matchLabels:
+#       app: angular-canary
+#   template:
+#     metadata:
+#       labels:
+#         app: angular-canary
+#     spec:
+#       containers:
+#         - name: angular-canary
+#           image: "vfjansen/angular-app-kube:v8.2"
 
-          resources:
-            requests:
-              cpu: "50m"
-              memory: 10Mi
-            limits:
-              cpu: "75m"
-              memory: 25Mi
+#           resources:
+#             requests:
+#               cpu: "50m"
+#               memory: 10Mi
+#             limits:
+#               cpu: "75m"
+#               memory: 25Mi
 
-          startupProbe:
-            httpGet:
-              path: /
-              port: 80
-            periodSeconds: 3
-            failureThreshold: 30
+#           startupProbe:
+#             httpGet:
+#               path: /
+#               port: 80
+#             periodSeconds: 3
+#             failureThreshold: 30
 
-          # reinicia o deploy para tentar manter a aplicação estável
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            periodSeconds: 5
-            failureThreshold: 3
-            timeoutSeconds: 1
-            successThreshold: 1
-            initialDelaySeconds: 10
+#           # reinicia o deploy para tentar manter a aplicação estável
+#           livenessProbe:
+#             httpGet:
+#               path: /
+#               port: 80
+#             periodSeconds: 5
+#             failureThreshold: 3
+#             timeoutSeconds: 1
+#             successThreshold: 1
+#             initialDelaySeconds: 10
 
-          # verifica se a aplicação está pronta pra recever tráfego e habilita o port forward
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            periodSeconds: 3
-            failureThreshold: 1
-            initialDelaySeconds: 10
+#           # verifica se a aplicação está pronta pra recever tráfego e habilita o port forward
+#           readinessProbe:
+#             httpGet:
+#               path: /
+#               port: 80
+#             periodSeconds: 3
+#             failureThreshold: 1
+#             initialDelaySeconds: 10
