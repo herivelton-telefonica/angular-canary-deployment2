@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: angular-canary
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: angular-canary
