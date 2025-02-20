@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: angular-canary
-          image: "vfjansen/angular-app-kube:v9" #vfjansen/angular-app-kube:v2
+          image: "vfjansen/angular-app-kube:v2" #vfjansen/angular-app-kube:v9
           resources:
             requests:
               cpu: "50m"
